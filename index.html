@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#12414f">
+<meta name="description" content="Offline-first point of sale and job order tracker for mobile phone repair shops.">
+<title>Mobile Repair POS</title>
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- PIN lock screen -->
+<div id="pinLockScreen" class="pin-lock hidden">
+  <div class="pin-lock-box">
+    <h1>🔧 Repair POS</h1>
+    <p>Enter PIN to continue</p>
+    <input type="password" id="pinInput" inputmode="numeric" maxlength="4" pattern="[0-9]*" autocomplete="off">
+    <button class="btn btn-primary" id="pinSubmit">Unlock</button>
+    <p id="pinError" class="pin-error hidden">Incorrect PIN. Try again.</p>
+  </div>
+</div>
+
+<div id="appShell" class="app-shell hidden">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+    <span class="topbar-title">Mobile Repair POS</span>
+    <span id="offlineIndicator" class="offline-pill hidden">Offline</span>
+  </header>
+
+  <div class="app-body">
+    <!-- Side navigation -->
+    <nav class="side-nav" id="sideNav">
+      <div class="side-nav-brand">🔧 Repair POS</div>
+      <a href="#/dashboard" class="nav-item" data-view="dashboard"><span class="nav-icon">📊</span>Dashboard</a>
+      <a href="#/joborders" class="nav-item" data-view="joborders"><span class="nav-icon">🧾</span>Job Orders</a>
+      <a href="#/customers" class="nav-item" data-view="customers"><span class="nav-icon">👤</span>Customers</a>
+      <a href="#/parts" class="nav-item" data-view="parts"><span class="nav-icon">⚙️</span>Parts</a>
+      <a href="#/suppliers" class="nav-item" data-view="suppliers"><span class="nav-icon">🚚</span>Suppliers</a>
+      <a href="#/payments" class="nav-item" data-view="payments"><span class="nav-icon">💵</span>Payments</a>
+      <a href="#/reports" class="nav-item" data-view="reports"><span class="nav-icon">📈</span>Reports</a>
+      <a href="#/settings" class="nav-item" data-view="settings"><span class="nav-icon">⚙</span>Settings</a>
+    </nav>
+    <div class="nav-scrim" id="navScrim"></div>
+
+    <!-- Main content -->
+    <main id="appContent" class="app-content"></main>
+  </div>
+
+  <!-- Bottom tab bar (mobile) -->
+  <nav class="bottom-nav" id="bottomNav">
+    <a href="#/dashboard" class="bottom-nav-item" data-view="dashboard"><span class="nav-icon">📊</span><span>Home</span></a>
+    <a href="#/joborders" class="bottom-nav-item" data-view="joborders"><span class="nav-icon">🧾</span><span>Jobs</span></a>
+    <a href="#/customers" class="bottom-nav-item" data-view="customers"><span class="nav-icon">👤</span><span>Customers</span></a>
+    <a href="#/payments" class="bottom-nav-item" data-view="payments"><span class="nav-icon">💵</span><span>Payments</span></a>
+    <button class="bottom-nav-item" id="bottomNavMore"><span class="nav-icon">☰</span><span>More</span></button>
+  </nav>
+
+</div>
+
+<!-- Toasts -->
+<div id="toastHost" class="toast-host"></div>
+
+<!-- Modal overlay -->
+<div id="modalOverlay" class="modal-overlay"></div>
+
+<!-- Print-only area (populated by print.js) -->
+<div id="printArea" class="print-area"></div>
+
+<script src="js/db.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/seed.js"></script>
+<script src="js/backup.js"></script>
+<script src="js/print.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/customers.js"></script>
+<script src="js/joborders.js"></script>
+<script src="js/parts.js"></script>
+<script src="js/suppliers.js"></script>
+<script src="js/payments.js"></script>
+<script src="js/reports.js"></script>
+<script src="js/router.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
